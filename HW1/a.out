@@ -1,0 +1,110 @@
+#! /usr/local/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1-107-gab6ae79)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x12c3d90 .scope module, "notAandB" "notAandB" 2 19;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A"
+    .port_info 1 /INPUT 1 "B"
+    .port_info 2 /OUTPUT 1 "AandB"
+    .port_info 3 /OUTPUT 1 "nAandB"
+o0x7f6b73b9d018 .functor BUFZ 1, C4<z>; HiZ drive
+o0x7f6b73b9d078 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x1313520 .functor AND 1, o0x7f6b73b9d018, o0x7f6b73b9d078, C4<1>, C4<1>;
+L_0x1313610 .functor NOT 1, L_0x1313520, C4<0>, C4<0>, C4<0>;
+v0x12fc2a0_0 .net "A", 0 0, o0x7f6b73b9d018;  0 drivers
+v0x1311eb0_0 .net "AandB", 0 0, L_0x1313520;  1 drivers
+v0x1311f70_0 .net "B", 0 0, o0x7f6b73b9d078;  0 drivers
+v0x1312040_0 .net "nAandB", 0 0, L_0x1313610;  1 drivers
+S_0x12c3f10 .scope module, "notAandnotB_test" "notAandnotB_test" 3 2;
+ .timescale 0 0;
+v0x1312900_0 .var "A", 0 0;
+v0x13129c0_0 .var "B", 0 0;
+v0x1312a90_0 .net "nA", 0 0, L_0x1313700;  1 drivers
+v0x1312b90_0 .net "nAandnB", 0 0, L_0x1313940;  1 drivers
+v0x1312c60_0 .net "nB", 0 0, L_0x1313810;  1 drivers
+S_0x13121b0 .scope module, "dut" "notAandnotB" 3 8, 2 1 0, S_0x12c3f10;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A"
+    .port_info 1 /INPUT 1 "B"
+    .port_info 2 /OUTPUT 1 "nA"
+    .port_info 3 /OUTPUT 1 "nB"
+    .port_info 4 /OUTPUT 1 "nAandnB"
+L_0x1313700 .functor NOT 1, v0x1312900_0, C4<0>, C4<0>, C4<0>;
+L_0x1313810 .functor NOT 1, v0x13129c0_0, C4<0>, C4<0>, C4<0>;
+L_0x1313940 .functor AND 1, L_0x1313700, L_0x1313810, C4<1>, C4<1>;
+v0x1312420_0 .net "A", 0 0, v0x1312900_0;  1 drivers
+v0x1312500_0 .net "B", 0 0, v0x13129c0_0;  1 drivers
+v0x13125c0_0 .net "nA", 0 0, L_0x1313700;  alias, 1 drivers
+v0x1312690_0 .net "nAandnB", 0 0, L_0x1313940;  alias, 1 drivers
+v0x1312750_0 .net "nB", 0 0, L_0x1313810;  alias, 1 drivers
+S_0x12fd450 .scope module, "notAorB" "notAorB" 2 49;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A"
+    .port_info 1 /INPUT 1 "B"
+    .port_info 2 /OUTPUT 1 "AorB"
+    .port_info 3 /OUTPUT 1 "nAorB"
+o0x7f6b73b9d378 .functor BUFZ 1, C4<z>; HiZ drive
+o0x7f6b73b9d3d8 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x1313a20 .functor OR 1, o0x7f6b73b9d378, o0x7f6b73b9d3d8, C4<0>, C4<0>;
+L_0x1313ab0 .functor NOT 1, L_0x1313a20, C4<0>, C4<0>, C4<0>;
+v0x1312d50_0 .net "A", 0 0, o0x7f6b73b9d378;  0 drivers
+v0x1312df0_0 .net "AorB", 0 0, L_0x1313a20;  1 drivers
+v0x1312e90_0 .net "B", 0 0, o0x7f6b73b9d3d8;  0 drivers
+v0x1312f60_0 .net "nAorB", 0 0, L_0x1313ab0;  1 drivers
+S_0x12fd630 .scope module, "notAornotB" "notAornotB" 2 33;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A"
+    .port_info 1 /INPUT 1 "B"
+    .port_info 2 /OUTPUT 1 "nA"
+    .port_info 3 /OUTPUT 1 "nB"
+    .port_info 4 /OUTPUT 1 "nAorB"
+o0x7f6b73b9d4f8 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x1313b70 .functor NOT 1, o0x7f6b73b9d4f8, C4<0>, C4<0>, C4<0>;
+o0x7f6b73b9d528 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x1313be0 .functor NOT 1, o0x7f6b73b9d528, C4<0>, C4<0>, C4<0>;
+L_0x1313c80 .functor OR 1, L_0x1313b70, L_0x1313be0, C4<0>, C4<0>;
+v0x1313070_0 .net "A", 0 0, o0x7f6b73b9d4f8;  0 drivers
+v0x1313150_0 .net "B", 0 0, o0x7f6b73b9d528;  0 drivers
+v0x1313210_0 .net "nA", 0 0, L_0x1313b70;  1 drivers
+v0x13132b0_0 .net "nAorB", 0 0, L_0x1313c80;  1 drivers
+v0x1313370_0 .net "nB", 0 0, L_0x1313be0;  1 drivers
+    .scope S_0x12c3f10;
+T_0 ;
+    %vpi_call 3 12 "$display", "A B | ~A ~B | ~A~B" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1312900_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x13129c0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 3 14 "$display", "%b %b |  %b  %b |    %b", v0x1312900_0, v0x13129c0_0, v0x1312a90_0, v0x1312c60_0, v0x1312b90_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x1312900_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x13129c0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 3 16 "$display", "%b %b |  %b  %b |    %b", v0x1312900_0, v0x13129c0_0, v0x1312a90_0, v0x1312c60_0, v0x1312b90_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1312900_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x13129c0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 3 18 "$display", "%b %b |  %b  %b |    %b", v0x1312900_0, v0x13129c0_0, v0x1312a90_0, v0x1312c60_0, v0x1312b90_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x1312900_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x13129c0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call 3 20 "$display", "%b %b |  %b  %b |    %b", v0x1312900_0, v0x13129c0_0, v0x1312a90_0, v0x1312c60_0, v0x1312b90_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./hw1.v";
+    "hw1.t.v";
